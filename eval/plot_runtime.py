@@ -43,7 +43,7 @@ def plot(x_legend, y_legend, x_arrays, y_arrays, loc, first_three_labels, second
 def plot2(x_legend, y_legend, x_arrays, y_arrays, loc):
     assert len(x_arrays) == len(y_arrays)
 
-    plt.rcParams.update({'font.size': 18})
+    plt.rcParams.update({'font.size': 16})
 
     color_sequence = ['blue', 'orange', 'green']
 
@@ -58,18 +58,22 @@ def plot2(x_legend, y_legend, x_arrays, y_arrays, loc):
             for i in range(len(y_array)):
                 if y_array[i] != 1.0 and y_array[i] != 0.0:
                     print str(x_arrays[idx][i]) + ":" + str(y_array[i])
-
-            plt.plot(x_arrays[idx], y_array, color=color_sequence[idx], label='VNF count=%s' % idx)
+            label = 'TopoSync-SFC: VNF count=%s' % idx
+            if idx == 0:
+                label = 'TopoSync [1]'
+            plt.plot(x_arrays[idx], y_array, color=color_sequence[idx], label=label)
 
     plt.xlabel(x_legend)
     plt.ylabel(y_legend)
-    plt.title("n=1000 experiments per VNF count", fontdict={'fontsize' : 18})
-    plt.legend(prop={'size': 18})
+    plt.title("n=1000 experiments per VNF count", fontdict={'fontsize' : 16})
+    plt.legend(prop={'size': 13})
     plt.xticks([0, 10000, 20000, 30000, 40000, 50000], map(lambda x: int(x/1000), [0, 10000, 20000, 30000, 40000, 50000]))
     plt.xlim(xmin=0, xmax=max(map(lambda x: x[len(x)-1], x_arrays)))
     plt.xlim(xmin=0, xmax=56507)
     plt.ylim(ymin=-0.05)
-    plt.show()
+    plt.savefig('runtime.png',bbox_inches='tight')
+    #plt.show()
+    plt.autoscale()
 
 
 def get_splitted_arrays_for_vnf_cases(array):
@@ -139,8 +143,8 @@ pad.reverse()
 for i in pad:
     cdf_st_2.insert(0, (i, 0))
 
-x_arrs = [map(lambda x: x[0], cdf_tpl_0), map(lambda x: x[0], cdf_tpl_1), map(lambda x: x[0], cdf_tpl_2), map(lambda x: x[0], cdf_st_0), map(lambda x: x[0], cdf_st_1), map(lambda x: x[0], cdf_st_2)]
-y_arrs = [map(lambda x: x[1], cdf_tpl_0), map(lambda x: x[1], cdf_tpl_1), map(lambda x: x[1], cdf_tpl_2), map(lambda x: x[1], cdf_st_0), map(lambda x: x[1], cdf_st_1), map(lambda x: x[1], cdf_st_2)]
+#x_arrs = [map(lambda x: x[0], cdf_tpl_0), map(lambda x: x[0], cdf_tpl_1), map(lambda x: x[0], cdf_tpl_2), map(lambda x: x[0], cdf_st_0), map(lambda x: x[0], cdf_st_1), map(lambda x: x[0], cdf_st_2)]
+#y_arrs = [map(lambda x: x[1], cdf_tpl_0), map(lambda x: x[1], cdf_tpl_1), map(lambda x: x[1], cdf_tpl_2), map(lambda x: x[1], cdf_st_0), map(lambda x: x[1], cdf_st_1), map(lambda x: x[1], cdf_st_2)]
 
 #plot("runtime [in ms]", "cumulative probability", x_arrs, y_arrs, "best", "SFC-TPL", "SFC-ST")
 

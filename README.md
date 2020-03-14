@@ -8,12 +8,12 @@ Our results were obtained with
 > Java 11
 > Python 2.7.15+
 
- Make sure to have all of the above installed and a valid Gurobi license set up (free for academic use).
+Make sure to have all of the above installed and a valid Gurobi license set up (free for academic use).
 
 ## Reproduce the evaluation
  1. In the `nfv/` directory, navigate to the class `TopoSyncSFCEval`.
  2. Executing the tests in this class produces several .csv files in the `nfv/` directory, containing the evaluation data. (`eval()` and `runtimes()` produce the data shown in Fig. 8, `tradeoff()`produces the data shown in Fig. 9).  Note that the requests are generated randomly, so the exact data may vary but the trends should be the same.
- 3. 
+ 3. Create plots from the data using the python scripts in `eval/`. In `eval/data` you can find our evaluation data, i.e. the data we got from executing step 2.
 ## Use the prototype
  1. Start an ONOS instance on localhost.
  2. Deploy the `NFVApp` on ONOS  using the script `nfv/buildAndDeploy.sh`. This may require installing the modules `common`and `groupcom`first. 
