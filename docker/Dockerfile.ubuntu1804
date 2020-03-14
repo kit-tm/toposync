@@ -1,0 +1,43 @@
+FROM ubuntu:bionic
+
+RUN apt-get update && apt-get install -y \
+    net-tools \
+    iputils-ping \
+    iproute2 \
+    python \
+    iperf \
+    telnet \
+    curl \
+    apt-transport-https \
+    ca-certificates \
+    software-properties-common \
+    openjdk-8-jdk
+
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+
+RUN add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    bionic \
+    stable"
+
+RUN apt-get install -y docker-ce
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install wireshark -y
+
+RUN apt-get install -y tcpdump
+
+RUN apt-get install -y openjdk-8-jdk
+
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+
+RUN python get-pip.py
+
+RUN pip install scapy
+
+RUN pip uninstall scapy-python3
+
+RUN pip install netaddr
+
+RUN pip install ipaddress
+
+CMD /bin/bash
