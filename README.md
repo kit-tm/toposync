@@ -2,17 +2,17 @@
 This repository contains the evaluation and prototype code related to the paper 
 "TopoSync-SFC: SFC-aware Network-driven Synchronization of Multicast Traffic in Software-defined Environments" which was published at the NetSoft 2020 conference and authored by Felix Bachmann, Robert Bauer, Hauke Heseding, and Martina Zitterbart.
 Our results were obtained with 
-> ONOS SDN Controller (Version 1.13.6) 
-> Gurobi ILP Solver (Version 8.1.0)
-> Containernet v2.0 (using mininet Version 2.3.0d1) 
-> Java 11
-> Python 2.7.15+
+* ONOS SDN Controller (Version 1.13.6) 
+* Gurobi ILP Solver (Version 8.1.0)
+* Containernet v2.0 (using mininet Version 2.3.0d1) 
+* Java 11
+* Python 2.7.15+
 
 Make sure to have all of the above installed and a valid Gurobi license set up (free for academic use).
 
 ## Reproduce the evaluation
  1. In the `nfv/` directory, navigate to the class `TopoSyncSFCEval`.
- 2. Executing the tests in this class produces several .csv files in the `nfv/` directory, containing the evaluation data. (`eval()` and `runtimes()` produce the data shown in Fig. 8, `tradeoff()`produces the data shown in Fig. 9).  Note that the requests are generated randomly, so the exact data may vary but the trends should be the same.
+ 2. Executing the JUnit tests in this class produces several .csv files in the `nfv/` directory, containing the evaluation data. (`eval()` and `runtimes()` produce the data shown in Fig. 8, `tradeoff()`produces the data shown in Fig. 9).  Note that the requests are generated randomly, so the exact data may vary but the trends should be the same.
  3. Create plots from the data using the python scripts in `eval/`. In `eval/data` you can find our evaluation data, i.e. the data we got from executing step 2.
 ## Use the prototype
  1. Start an ONOS instance on localhost.
