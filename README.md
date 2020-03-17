@@ -1,4 +1,4 @@
-# TopoSync-SFC Code Repo
+# TopoSync-SFC Code Repository
 This repository contains the evaluation and prototype code related to the paper 
 "TopoSync-SFC: SFC-aware Network-driven Synchronization of Multicast Traffic in Software-defined Environments" which was published at the NetSoft 2020 conference and authored by Felix Bachmann, Robert Bauer, Hauke Heseding, and Martina Zitterbart.
 Our results were obtained with 
